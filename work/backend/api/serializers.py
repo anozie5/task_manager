@@ -14,7 +14,7 @@ class CreationSerializer(serializers.ModelSerializer):
         }
 
     def validate_password(self, value):
-        if not re.search(r'[a-zA-Z]', value) and not re.search(r'[\W_]', value):
+        if not re.search(r'[a-zA-Z]', value) and not re.search(r'[!@#$%^&*(),.?":{}|<>]', value):
             raise serializers.ValidationError("Password must contain at least one letter and or one symbol.")
         
         return value
